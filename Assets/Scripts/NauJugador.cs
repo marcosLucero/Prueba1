@@ -7,9 +7,8 @@ public class NauJugador : MonoBehaviour
 {
     private float _vel;
 
-
     private Vector2 minPantalla, maxPantalla;
-
+    [SerializeField] private GameObject prefabProjectil;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +48,16 @@ public class NauJugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MovimientNau();
+        DisparaProjectil();
+
+
+
+
+        
+    }
+    private void MovimientNau()
+    {
         float direcioIndicadaX = Input.GetAxisRaw("Horizontal");
         float direcioIndicadaY = Input.GetAxisRaw("Vertical"); 
 
@@ -63,9 +72,13 @@ public class NauJugador : MonoBehaviour
         novaPos.y = Mathf.Clamp(novaPos.y, minPantalla.y, maxPantalla.y);
 
         transform.position = novaPos;
-
-
-
-        
+    }
+    private void DisparaProjectil()
+    {
+        if (Input.GetKeyDown("space")) //con GetKeyDown solo sale uno pero con GetKey salen infinito
+        {
+            GameObject proyectil = Instantiate(prefabProjectil);
+            proyectil.transform.position = transform.position;
+        }
     }
 }
