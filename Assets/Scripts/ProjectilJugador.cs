@@ -28,4 +28,11 @@ public class prejectilJugador : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnTriggerEnter2D(Collider2D objectTocat)
+    {
+        if (objectTocat.tag == "Numero") 
+        {
+            Destroy(gameObject) ;
+        }
+    }
 }

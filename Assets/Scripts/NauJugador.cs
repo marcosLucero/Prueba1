@@ -73,6 +73,13 @@ public class NauJugador : MonoBehaviour
 
         transform.position = novaPos;
     }
+    private void OnTriggerEnter2D(Collider2D objecteTocat)
+    {
+        if (objecteTocat.tag == "Numero")
+        {
+            Destroy(gameObject);
+        }
+    }
     private void DisparaProjectil()
     {
         if (Input.GetKeyDown("space")) //con GetKeyDown solo sale uno pero con GetKey salen infinito
